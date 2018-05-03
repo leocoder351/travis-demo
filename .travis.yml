@@ -1,12 +1,18 @@
 language: node_js
 node_js:
-  - "8"
-  - "7"
-  - "6"
+  - '8'
+  - '7'
+  - '6'
 before_install:
-  - echo "Hello Travis"
+  - openssl aes-256-cbc -K $encrypted_aa7f44cf7988_key -iv $encrypted_aa7f44cf7988_iv
+  - in travis_rsa.enc -out ~\/.ssh/travis_rsa -d
+  - chmod 600 ~/.ssh/travis_rsa
+  - echo -e "Host 47.104.66.25\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 install:
   - npm install
 script:
   - npm run test
-
+after_success:
+  - npm prune --production
+  - tar -jcf travis-server.tar.bz2 *
+  - scp travis-server.tar.bz2 liuxuan@47.104.66.25:/home/liuxuan/
