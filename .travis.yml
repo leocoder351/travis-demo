@@ -13,3 +13,5 @@ after_success:
   - npm prune --production
   - tar -jcf travis-server.tar.bz2 *
   - scp travis-server.tar.bz2 liuxuan@47.104.66.25:/home/liuxuan/
+addons:
+	ssh_known_hosts: 47.104.66.25
