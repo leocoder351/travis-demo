@@ -4,8 +4,8 @@ node_js:
 before_install:
   - openssl aes-256-cbc -K $encrypted_aa7f44cf7988_key -iv $encrypted_aa7f44cf7988_iv -in travis_rsa.enc -out ~/.ssh/travis_rsa -d
   - chmod 600 ~/.ssh/travis_rsa
-  - echo -e "Host 47.104.66.25\n\tPort 22\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - ssh liuxuan@47.104.66.25
+  - echo -e "User liuxuan\n\tHost aliyun25\n\tHostName 47.104.66.25\n\tPort 22\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/travis_rsa\n" >> ~/.ssh/config
+  - ssh aliyun25
   - echo "I am in 47.104.66.25"
 install:
   - npm install
