@@ -9,6 +9,5 @@ var server = http.createServer(function (req, res) {
   res.end();
 });
 
-server.listen(8000, function () {
-  console.log('Server running at http://localhost:8000');
-})
+server.listen(3000, '172.31.222.64')
+console.log('Server running at http://47.104.66.25:3000');
