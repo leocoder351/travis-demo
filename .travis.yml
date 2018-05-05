@@ -14,7 +14,7 @@ after_success:
 - npm prune --production
 - tar -cf travis-server.tar *
 - scp -i ~/.ssh/travis_rsa travis-server.tar liuxuan@47.104.66.25:/home/liuxuan/travis
-- ssh liuxuan@47.104.66.25 'cd && cd travis && tar -xvf travis-server.tar'
-- ssh liuxuan@47.104.66.25 'node app.js'
+- ssh -i ~/.ssh/travis_rsa liuxuan@47.104.66.25 'cd && cd travis && tar -xvf travis-server.tar'
+- ssh -i ~/.ssh/travis_rsa liuxuan@47.104.66.25 'node app.js'
 addons:
   ssh_known_hosts: 47.104.66.25
