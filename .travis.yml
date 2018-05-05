@@ -2,8 +2,8 @@ language: node_js
 node_js:
 - '8'
 before_install:
-- openssl aes-256-cbc -K $encrypted_31e08961829b_key -iv $encrypted_31e08961829b_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa
+- openssl aes-256-cbc -K $encrypted_aa7f44cf7988_key -iv $encrypted_aa7f44cf7988_iv -in travis_rsa.enc -out ~\/.ssh/travis_rsa -d
+- chmod 600 ~/.ssh/travis_rsa
 - echo -e "Host 47.104.66.25\n\tPort 22\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - echo "I am in 47.104.66.25"
 install:
@@ -12,7 +12,7 @@ script:
 - npm run test
 after_success:
 - npm prune --production
-- tar -jcf travis-server.tar.bz2 *
-- scp travis-server.tar.bz2 liuxuan@47.104.66.25:/home/liuxuan/
+- tar -cf travis-server.tar *
+- scp travis-server.tar liuxuan@47.104.66.25:/home/liuxuan/travis
 addons:
-    ssh_known_hosts: 47.104.66.25
+  ssh_known_hosts: 47.104.66.25
