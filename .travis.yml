@@ -13,6 +13,6 @@ script:
 after_success:
 - npm prune --production
 - tar -cf travis-server.tar *
-- scp -i travis_rsa travis-server.tar liuxuan@47.104.66.25:/home/liuxuan/travis
+- scp -i ~/.ssh/travis_rsa travis-server.tar liuxuan@47.104.66.25:/home/liuxuan/travis
 addons:
   ssh_known_hosts: 47.104.66.25
